@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css"
+        integrity="undefined" crossorigin="anonymous">
+    <title>Activity</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link href="../../style/css/home.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <form action="">
+        <div class="container-edit-profile">
+            <!-- #TODO header -->
+            <div class="header-edit-profile">
+                <a>
+                    <img src="../../img/backk.svg" alt="">
+                </a>
+                <h6 style="font-family: Nunito; font-weight: 700; font-size: 20px;">
+                    Edit Profile
+                </h6>
+                <button type="submit">
+                    <img src="../../img/selesai.svg" alt="">
+                </button>
+            </div>
+            <!-- #TODO BODY -->
+            <div class=" content-edit-profile">
+                <div class="box-foto-profile">
+                    <a class="foto-profilee" href="#big-preview">
+                        <img id="chosen-file" class="chosen-file" src="" alt="">
+                        <input type="file" id="upload-button" accept="image/*">
+                        <label for="upload-button">
+                            <img src="../../img/Upload_button.svg" alt="">
+                        </label>
+                    </a>
+                </div>
+                <div class="big-preview" id="big-preview">
+                    <a href="#" class="close">x close</a>
+                    <img src="" alt="" id="preview2">
+                </div>
+                <div class="box-data">
+                    <div class="data-name">
+                        <span>
+                            Name
+                        </span>
+                        <a href="">
+                            <h6>Viola Orelia </h6><img src="../../img/next.svg" alt="">
+                        </a>
+                    </div>
+                    <div class="data-name">
+                        <span>
+                            Username
+                        </span>
+                        <a href="">
+                            <h6>@violaphotographer </h6><img src="../../img/next.svg" alt="">
+                        </a>
+                    </div>
+                    <div class="data-name">
+                        <span>
+                            Bio
+                        </span>
+                        <a href="">
+                            <h6>There are many variations of passages of Lorem Ipsum available the majority have
+                                suffered alteration in randoms </h6><img src="../../img/next.svg" alt="">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="black-container" id="black">
+            </div>
+            <div class="popup-chose-foto" id="popUpChose">
+                <div class="header-popup-chose">
+                    <span>
+                        Profile Foto
+                    </span>
+                    <a onclick="popup_chose() ">
+                        <img src="../../img/exitt.svg" alt="">
+                    </a>
+                </div>
+                <div class="body-popup-chose">
+                    <div class="box-chose">
+                        <img src="../../img/tong_sampah_merah.svg" alt="">
+                        <span>
+                            Remove photo
+                        </span>
+                    </div>
+                    <div class="box-chose">
+                        <img src="../../img/galery.svg" alt="">
+                        <span>
+                            Galery
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous">
+    </script>
+
+    <script>
+        const inpFile = document.getElementById('upload-button');
+        const preimage = document.getElementById('chosen-file')
+        const preimage2 = document.getElementById('preview2')
+
+        inpFile.addEventListener("change", function () {
+            const file = this.files[0];
+
+            if (file) {
+                const reader = new FileReader();
+
+
+                reader.addEventListener("load", function () {
+                    console.log(this);
+                    preimage.setAttribute("src", this.result);
+                    preimage2.setAttribute("src", this.result);
+                });
+
+                reader.readAsDataURL(file);
+            } else {
+                preimage.style.display = null;
+                preimage.setAttribute("src", "");
+                preimage2.setAttribute("src", "");
+            }
+        });
+
+
+        function popup_chose() {
+            const black = document.getElementById('black')
+            const popup_chose = document.getElementById('popUpChose')
+            popup_chose.classList.toggle('active');
+            black.classList.toggle('active');
+        }
+    </script>
+</body>
+
+</html>
